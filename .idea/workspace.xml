@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32591045-1a3c-496e-98c0-609865148bc1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/springbook/user/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springbook/user/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springbook/user/dao/UserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springbook/user/dao/UserDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +146,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581246648952</updated>
-      <workItem from="1581246650157" duration="8745000" />
+      <workItem from="1581246650157" duration="9328000" />
     </task>
     <servers />
   </component>
@@ -164,22 +166,22 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="663" y="269" key="ExecutionTargetDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1581249800664" />
-    <state width="1040" height="318" key="GridCell.Tab.0.bottom" timestamp="1581256387862">
+    <state width="1040" height="318" key="GridCell.Tab.0.bottom" timestamp="1581256793217">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1040" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1581256387862" />
-    <state width="1040" height="318" key="GridCell.Tab.0.center" timestamp="1581256387861">
+    <state width="1040" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1581256793217" />
+    <state width="1040" height="318" key="GridCell.Tab.0.center" timestamp="1581256793216">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1040" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1581256387861" />
-    <state width="1040" height="318" key="GridCell.Tab.0.left" timestamp="1581256387860">
+    <state width="1040" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1581256793216" />
+    <state width="1040" height="318" key="GridCell.Tab.0.left" timestamp="1581256793215">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1040" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1581256387860" />
-    <state width="1040" height="318" key="GridCell.Tab.0.right" timestamp="1581256387861">
+    <state width="1040" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1581256793215" />
+    <state width="1040" height="318" key="GridCell.Tab.0.right" timestamp="1581256793216">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1040" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1581256387861" />
+    <state width="1040" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1581256793216" />
     <state x="759" y="330" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1581250116288">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
