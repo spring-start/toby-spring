@@ -19,7 +19,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="/applicationContext.xml"));
+@ContextConfiguration(locations="/applicationContext.xml")
 public class UserDaoTest {
     @Autowired
     private ApplicationContext context;
@@ -30,7 +30,7 @@ public class UserDaoTest {
 
     @Before
     public void setUp() {
-        this.dao = context.getBean("userDao", UserDao.class);
+        this.dao = this.context.getBean("userDao", UserDao.class);
         this.user1 = new User("gyumee", "박성철", "springno1");
         this.user2 = new User("leegw700", "이길원", "springno2");
         this.user3 = new User("bumjin", "박범진", "springno3");
