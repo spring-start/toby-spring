@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32591045-1a3c-496e-98c0-609865148bc1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/springbook/user/dao/UserDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/springbook/user/dao/UserDaoTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/springbook/user/dao/UserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springbook/user/dao/UserDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +98,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.UserDaoTest">
     <configuration name="UserDaoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="springbook.user.dao.UserDaoTest" />
       <module name="toby-spring.main" />
@@ -103,8 +112,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="toby-spring [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.toby-spring [dependencies]" />
         <item itemvalue="Application.UserDaoTest" />
       </list>
     </recent_temporary>
@@ -146,7 +175,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581246648952</updated>
-      <workItem from="1581246650157" duration="9328000" />
+      <workItem from="1581246650157" duration="10376000" />
     </task>
     <servers />
   </component>
@@ -166,22 +195,22 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="663" y="269" key="ExecutionTargetDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1581249800664" />
-    <state width="1040" height="318" key="GridCell.Tab.0.bottom" timestamp="1581256793217">
+    <state width="1040" height="318" key="GridCell.Tab.0.bottom" timestamp="1581258339008">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1040" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1581256793217" />
-    <state width="1040" height="318" key="GridCell.Tab.0.center" timestamp="1581256793216">
+    <state width="1040" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1581258339008" />
+    <state width="1040" height="318" key="GridCell.Tab.0.center" timestamp="1581258339007">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1040" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1581256793216" />
-    <state width="1040" height="318" key="GridCell.Tab.0.left" timestamp="1581256793215">
+    <state width="1040" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1581258339007" />
+    <state width="1040" height="318" key="GridCell.Tab.0.left" timestamp="1581258339006">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1040" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1581256793215" />
-    <state width="1040" height="318" key="GridCell.Tab.0.right" timestamp="1581256793216">
+    <state width="1040" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1581258339006" />
+    <state width="1040" height="318" key="GridCell.Tab.0.right" timestamp="1581258339008">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1040" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1581256793216" />
+    <state width="1040" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1581258339008" />
     <state x="759" y="330" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1581250116288">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
