@@ -22,13 +22,7 @@ import javax.sql.DataSource;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="/test-applicationContext.xml")
-@DirtiesContext
 public class UserDaoTest {
-    @Autowired
-    private ApplicationContext context;
-    @Autowired
     private UserDao dao;
     private User user1;
     private User user2;
@@ -36,8 +30,7 @@ public class UserDaoTest {
 
     @Before
     public void setUp() {
-        System.out.println(this.context);
-        System.out.println(this);
+        dao = new UserDao();
         DataSource dataSource = new SingleConnectionDataSource("jdbc:mysql://localhost/testdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC ", "spring", "book", true);
         dao.setDataSource(dataSource);
         this.user1 = new User("gyumee", "박성철", "springno1");
