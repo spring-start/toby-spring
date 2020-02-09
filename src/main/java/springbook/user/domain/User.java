@@ -10,6 +10,10 @@ public class User {
         this.password = password;
     }
 
+    public User() {
+        super();
+    };
+
     String password;
 
     public String getId() {
