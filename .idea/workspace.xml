@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32591045-1a3c-496e-98c0-609865148bc1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -11,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/springbook/user/dao/UserDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/springbook/user/dao/UserDaoTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/springbook/user/dao/UserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springbook/user/dao/UserDaoTest.java" afterDir="false" />
@@ -39,6 +36,17 @@
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="springbook: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
     </expand>
     <select />
@@ -75,6 +83,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="UserDaoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -114,6 +127,11 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@554a1059" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:" type="7427dc5b:ServiceModel$ServiceGroupNode" />
                 <item name="com.intellij.database.console.session.MessageBusSession@51499e65" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
@@ -133,7 +151,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581246648952</updated>
-      <workItem from="1581246650157" duration="4789000" />
+      <workItem from="1581246650157" duration="5323000" />
     </task>
     <servers />
   </component>
@@ -149,22 +167,22 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="663" y="269" key="ExecutionTargetDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1581249800664" />
-    <state width="1750" height="318" key="GridCell.Tab.0.bottom" timestamp="1581252401926">
+    <state width="1040" height="318" key="GridCell.Tab.0.bottom" timestamp="1581253109637">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1581252401926" />
-    <state width="1750" height="318" key="GridCell.Tab.0.center" timestamp="1581252401925">
+    <state width="1040" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1581253109637" />
+    <state width="1040" height="318" key="GridCell.Tab.0.center" timestamp="1581253109636">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1581252401925" />
-    <state width="1750" height="318" key="GridCell.Tab.0.left" timestamp="1581252401924">
+    <state width="1040" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1581253109636" />
+    <state width="1040" height="318" key="GridCell.Tab.0.left" timestamp="1581253109635">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1581252401924" />
-    <state width="1750" height="318" key="GridCell.Tab.0.right" timestamp="1581252401925">
+    <state width="1040" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1581253109635" />
+    <state width="1040" height="318" key="GridCell.Tab.0.right" timestamp="1581253109636">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1581252401925" />
+    <state width="1040" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1581253109636" />
     <state x="759" y="330" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1581250116288">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
