@@ -32,22 +32,22 @@ public class UserDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public void add(final User user) throws SQLException {
+    public void add(final User user) {
         this.jdbcTemplate.update("insert into users(id, name, password) values(?, ?, ?)",
                 user.getId(), user.getName(), user.getPassword());
     }
 
-    public User get(String id) throws SQLException {
+    public User get(String id) {
         return this.jdbcTemplate.queryForObject("select * from users where id =? ",
                 new Object[] {id}, this.userMapper);
     }
 
-    public void deleteAll() throws SQLException {
+    public void deleteAll() {
 
         this.jdbcTemplate.update("delete from users");
     }
 
-    public int getCount() throws SQLException {
+    public int getCount() {
         return this.jdbcTemplate.queryForInt("select count(*) from users");
     }
 
