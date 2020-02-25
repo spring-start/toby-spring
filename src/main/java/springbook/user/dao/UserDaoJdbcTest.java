@@ -10,8 +10,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
+import org.springframework.jdbc.support.SQLExceptionTranslator;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -129,6 +132,21 @@ public class UserDaoJdbcTest {
 
         dao.add(user1);
         dao.add(user1);
+    }
+
+    @Test(expected = DuplicateKeyException.class)
+    public void sqlExceptionTranslate(){
+        dao.deleteAll();
+        try{
+            dao.add(user1);
+            dao.add(user1);
+        }
+        catch(DuplicateKeyException ex){
+            SQLException sqlEx = (SQLException)ex.getRootCause();
+            SQLExceptionTranslator set = new SQLErrorCodeSQLExceptionTranslator(this.dataSource);
+
+            throw set.translate(null, null, sqlEx);
+        }
     }
 
     private void checkSameUser(User user1, User user2) {

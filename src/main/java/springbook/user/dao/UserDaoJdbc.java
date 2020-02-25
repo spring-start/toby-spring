@@ -33,15 +33,9 @@ public class UserDaoJdbc implements UserDao{
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public void add(final User user) throws DuplicateUserIdException{
-        try{
-            this.jdbcTemplate.update("insert into users(id, name, password) values(?, ?, ?)",
-                    user.getId(), user.getName(), user.getPassword());
-        }
-        catch(DuplicateKeyException e) {
-            System.out.println("key가 중복되었습니다.");
-            throw new DuplicateUserIdException(e); // 예외를 전환할 때는 원인이 되는 예외를 중첩하자.
-        }
+    public void add(final User user) throws DuplicateKeyException{
+        this.jdbcTemplate.update("insert into users(id, name, password) values(?, ?, ?)",
+                user.getId(), user.getName(), user.getPassword());
     }
 
     public User get(String id) {
@@ -56,7 +50,6 @@ public class UserDaoJdbc implements UserDao{
     public int getCount() {
         return this.jdbcTemplate.queryForInt("select count(*) from users");
     }
-
 
     public List<User> getAll() {
         return this.jdbcTemplate.query("select * from users order by id", this.userMapper);
