@@ -1,5 +1,6 @@
 package springbook.user.dao;
 
+import com.mysql.cj.exceptions.MysqlErrorNumbers;
 import org.springframework.dao.EmptyResultDataAccessException;
 import springbook.user.domain.User;
 
@@ -19,16 +20,29 @@ public class UserDao {
         this.dataSource = dataSource;
     }
 
-    public void add(final User user) throws SQLException {
-        this.jdbcContext.workWithStatementStrategy((Connection c) -> {
-            PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) " +
-                    " values(?, ?, ?)");
-            ps.setString(1, user.getId());
-            ps.setString(2, user.getName());
-            ps.setString(3, user.getPassword());
+    public void add(final User user) throws Throwable {
+        try{
+            this.jdbcContext.workWithStatementStrategy((Connection c) -> {
+                PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) " +
+                        " values(?, ?, ?)");
+                ps.setString(1, user.getId());
+                ps.setString(2, user.getName());
+                ps.setString(3, user.getPassword());
 
-            return ps;
-        });
+                return ps;
+            });
+        }
+        catch (SQLException e) {
+            // ErrorCode가 MySQL의 "Duplicate Entry(1062)" 이면 예외 전환
+            if(e.getErrorCode() == MysqlErrorNumbers.ER_DUP_ENTRY){
+//                throw new DuplicateUserIdException();
+                throw new DuplicateUserIdException(e);
+//                throw new DuplicateUserIdException().initCause(e);
+            }
+            else
+                throw new RuntimeException(e); // 그 외 경우 RuntimeException으로 wrapping
+        }
+
     }
 
     public User get(String id) throws SQLException {
