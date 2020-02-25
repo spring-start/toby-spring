@@ -1,6 +1,7 @@
 package springbook.user.dao;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -32,9 +33,15 @@ public class UserDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public void add(final User user) {
-        this.jdbcTemplate.update("insert into users(id, name, password) values(?, ?, ?)",
-                user.getId(), user.getName(), user.getPassword());
+    public void add(final User user) throws DuplicateUserIdException{
+        try{
+            this.jdbcTemplate.update("insert into users(id, name, password) values(?, ?, ?)",
+                    user.getId(), user.getName(), user.getPassword());
+        }
+        catch(DuplicateKeyException e) {
+            System.out.println("key가 중복되었습니다.");
+            throw new DuplicateUserIdException(e); // 예외를 전환할 때는 원인이 되는 예외를 중첩하자.
+        }
     }
 
     public User get(String id) {
@@ -43,7 +50,6 @@ public class UserDao {
     }
 
     public void deleteAll() {
-
         this.jdbcTemplate.update("delete from users");
     }
 
@@ -53,6 +59,6 @@ public class UserDao {
 
 
     public List<User> getAll() {
-        return  this.jdbcTemplate.query("select * from users order by id", this.userMapper);
+        return this.jdbcTemplate.query("select * from users order by id", this.userMapper);
     }
 }
