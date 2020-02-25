@@ -49,7 +49,7 @@ public class UserDaoTest {
         JUnitCore.main("springbook.user.dao.UserDaoTest");
     }
     @Test
-    public void addAndGet() throws Throwable {
+    public void addAndGet() throws SQLException {
 
         User user1 = new User("gyumee", "박성철", "springno1");
         User user2 = new User("leegw700", "이길원", "springno2");
@@ -72,7 +72,7 @@ public class UserDaoTest {
     }
 
     @Test
-    public void count() throws Throwable {
+    public void count() throws SQLException {
 
         dao.deleteAll();
         assertThat(dao.getCount(), is(0));

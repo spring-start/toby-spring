@@ -20,7 +20,7 @@ public class UserDao {
         this.dataSource = dataSource;
     }
 
-    public void add(final User user) throws Throwable {
+    public void add(final User user) {
         try{
             this.jdbcContext.workWithStatementStrategy((Connection c) -> {
                 PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) " +
