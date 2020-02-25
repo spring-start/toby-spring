@@ -1,7 +1,9 @@
 package springbook.user.dao;
 
-public class DuplicateUserIdException extends RuntimeException {
+import org.springframework.dao.DataAccessException;
+
+public class DuplicateUserIdException extends DataAccessException {
     public DuplicateUserIdException(Throwable cause){
-        super(cause);
+        super(String.valueOf(cause));
     }
 }
