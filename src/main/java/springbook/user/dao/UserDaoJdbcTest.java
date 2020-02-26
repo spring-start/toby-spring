@@ -9,10 +9,12 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-
-import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
+import org.springframework.jdbc.support.SQLExceptionTranslator;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -26,28 +28,28 @@ import static org.junit.Assert.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="/test-applicationContext.xml")
 @DirtiesContext
-public class UserDaoTest {
+public class UserDaoJdbcTest {
     @Autowired
     private ApplicationContext context;
     @Autowired
     private UserDao dao;
+    @Autowired
+    private DataSource dataSource;
+
     private User user1;
     private User user2;
     private User user3;
 
+
     @Before
     public void setUp() {
-        System.out.println(this.context);
-        System.out.println(this);
-        DataSource dataSource = new SingleConnectionDataSource("jdbc:mysql://localhost/testdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC ", "spring", "book", true);
-        dao.setDataSource(dataSource);
         this.user1 = new User("gyumee", "박성철", "springno1");
         this.user2 = new User("leegw700", "이길원", "springno2");
         this.user3 = new User("bumjin", "박범진", "springno3");
     }
 
     public static void main(String[] args) {
-        JUnitCore.main("springbook.user.dao.UserDaoTest");
+        JUnitCore.main("springbook.user.dao.UserDaoJdbcTest");
     }
     @Test
     public void addAndGet() throws SQLException {
@@ -122,6 +124,29 @@ public class UserDaoTest {
         checkSameUser(user3, users3.get(0));
         checkSameUser(user1, users3.get(1));
         checkSameUser(user2, users3.get(2));
+    }
+
+    @Test(expected = DataAccessException.class)
+    public void duplicateKey(){
+        dao.deleteAll();
+
+        dao.add(user1);
+        dao.add(user1);
+    }
+
+    @Test(expected = DuplicateKeyException.class)
+    public void sqlExceptionTranslate(){
+        dao.deleteAll();
+        try{
+            dao.add(user1);
+            dao.add(user1);
+        }
+        catch(DuplicateKeyException ex){
+            SQLException sqlEx = (SQLException)ex.getRootCause();
+            SQLExceptionTranslator set = new SQLErrorCodeSQLExceptionTranslator(this.dataSource);
+
+            throw set.translate(null, null, sqlEx);
+        }
     }
 
     private void checkSameUser(User user1, User user2) {
