@@ -1,7 +1,11 @@
 package springbook.user.service;
 
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DataSourceUtils;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.interceptor.TransactionInterceptor;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import springbook.user.dao.UserDao;
 import springbook.user.domain.Level;
@@ -31,12 +35,11 @@ public class UserService {
 
 
     public void upgradeLevels() throws Exception{
-        // TODO : 코드 까보기
-        TransactionSynchronizationManager.initSynchronization();
-        // 이 메서드가 connection을 transaction 저장소에 저장해준다
-        Connection c = DataSourceUtils.getConnection(dataSource);
-        c.setAutoCommit(false);
-
+        PlatformTransactionManager transactionManager =
+                new DataSourceTransactionManager(dataSource);
+        TransactionStatus status =
+                // Transaction에 대한 속성을 담는다
+                transactionManager.getTransaction(new DefaultTransactionDefinition());
         try {
             List<User> users = userDao.getAll();
             for (User user : users) {
@@ -44,14 +47,11 @@ public class UserService {
                     userLevelUpgradePolicy.upgradeLevel(user);
                 }
             }
-            c.commit();
+            // status가 어떻게 사용되고 있는 것일까? 코드 상에는 바뀐게 없어보이는데
+            transactionManager.commit(status);
         } catch (Exception e) {
-            c.rollback();
+            transactionManager.rollback(status);
             throw e;
-        } finally {
-            DataSourceUtils.releaseConnection(c, dataSource);
-            TransactionSynchronizationManager.unbindResource(this.dataSource);
-            TransactionSynchronizationManager.clearSynchronization();
         }
     }
 
