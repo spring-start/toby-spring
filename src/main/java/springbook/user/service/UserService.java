@@ -17,10 +17,10 @@ import java.util.List;
 
 public class UserService {
     UserDao userDao;
-    private DataSource dataSource;
+    private PlatformTransactionManager transactionManager;
 
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public void setTransactionManager(PlatformTransactionManager transactionManager) {
+        this.transactionManager = transactionManager;
     }
 
     public void setUserLevelUpgradePolicy(UserLevelUpgradePolicy userLevelUpgradePolicy) {
@@ -35,8 +35,6 @@ public class UserService {
 
 
     public void upgradeLevels() throws Exception{
-        PlatformTransactionManager transactionManager =
-                new DataSourceTransactionManager(dataSource);
         TransactionStatus status =
                 // Transaction에 대한 속성을 담는다
                 transactionManager.getTransaction(new DefaultTransactionDefinition());
