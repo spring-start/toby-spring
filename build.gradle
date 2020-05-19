@@ -20,5 +20,6 @@ dependencies {
     compile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.springframework', name: 'spring-test', version: '4.1.2.RELEASE'
     testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
+    compile group: 'javax.mail', name: 'mail', version: '1.4.7'
 
 }
