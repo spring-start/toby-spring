@@ -14,10 +14,10 @@ import static org.junit.Assert.assertThat;
 @ContextConfiguration(locations = "/test-applicationContext.xml")
 public class UserServiceTest {
     @Autowired
-    UserService userService;
+    UserServiceImpl userServiceImpl;
 
     @Test
     public void bean() {
-       assertThat(this.userService, is(notNullValue()));
+       assertThat(this.userServiceImpl, is(notNullValue()));
     }
 }
