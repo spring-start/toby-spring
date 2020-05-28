@@ -23,6 +23,8 @@ dependencies {
     testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
     compile group: 'javax.mail', name: 'mail', version: '1.4.7'
     compile group: 'org.springframework', name: 'spring-context-support', version: '3.1.0.RELEASE'
+    compile group: 'aopalliance', name: 'aopalliance', version: '1.0'
+    compile group: 'org.springframework', name: 'spring-aop', version: '3.0.7.RELEASE'
 }
 
 test {
