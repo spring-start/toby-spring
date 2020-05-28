@@ -14,6 +14,7 @@ import springbook.user.dao.UserDao;
 import springbook.user.domain.Level;
 import springbook.user.domain.User;
 
+import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.List;
 
