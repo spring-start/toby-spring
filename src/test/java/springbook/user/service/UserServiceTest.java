@@ -61,8 +61,14 @@ public class UserServiceTest {
         userServiceImpl.setUserDao(mockUserDao);
 
         MailSender mockMailSender = mock(MailSender.class);
-        userServiceImpl.setMailSender(mockMailSender);
 
+        UserLevelUpgradePolicy userLevelUpgradePolicy = new BasicUserLevelUpgradePolicy();
+        ((BasicUserLevelUpgradePolicy)userLevelUpgradePolicy).setUserDao(mockUserDao);
+        ((BasicUserLevelUpgradePolicy)userLevelUpgradePolicy).setMailSender(mockMailSender);
+
+        userServiceImpl.setMailSender(mockMailSender);
+        userServiceImpl.setUserLevelUpgradePolicy(new BasicUserLevelUpgradePolicy());
+        userServiceImpl.setUserLevelUpgradePolicy(userLevelUpgradePolicy);
         userServiceImpl.upgradeLevels();
 
         verify(mockUserDao, times(2)).update(any(User.class));

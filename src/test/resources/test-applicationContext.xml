@@ -11,10 +11,6 @@
         <property name="suppressClose" value="true" />
     </bean>
 
-    <bean id="userService" class="springbook.user.service.UserServiceImpl">
-        <property name="userDao" ref="userDao"/>
-    </bean>
-
     <bean id="userDao" class="springbook.user.dao.UserDaoJdbc">
         <property name="dataSource" ref="dataSource" />
     </bean>
