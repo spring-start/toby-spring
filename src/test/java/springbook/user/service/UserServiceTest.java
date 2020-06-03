@@ -76,6 +76,10 @@ public class UserServiceTest {
         checkLevelUpgraded(users.get(1), false);
     }
 
+    @Test
+    public void advisorAutoProxyCreator() {
+        assertThat(testUserService, is(java.lang.reflect.Proxy.class)); // 프록시로 변경된 오브젝트인지 확인한다.
+    }
 
     @Test
     public void bean() {
