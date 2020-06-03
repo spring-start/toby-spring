@@ -14,15 +14,7 @@
     <bean id="userDao" class="springbook.user.dao.UserDaoJdbc">
         <property name="dataSource" ref="dataSource" />
     </bean>
-    <bean id="userService" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="target" ref="userServiceImpl" />
-        <property name="interceptorNames">
-            <list>
-                <value>transactionAdvisor</value>
-            </list>
-        </property>
-    </bean>
-    <bean id="userServiceImpl" class="springbook.user.service.UserServiceImpl">
+    <bean id="userService" class="springbook.user.service.UserServiceImpl">
         <property name="userDao" ref="userDao" />
     </bean>
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -38,9 +30,12 @@
         <property name="advice" ref="transactionAdvice" />
         <property name="pointcut" ref="transactionPointCut" />
     </bean>
+<!--    등록된 빈 중에서 어드바이저를 구현한 것을 모두 찾는다. 그 후 모든 어드바이저에 대해 포인트컷을 등록-->
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
     <bean id="transactionPointcut" class="springbook.user.service.NameMatchClassMethodPointcut">
         <property name="mappedClassName" value="*ServiceImpl" />
         <property name="mappedName" value="upgrade*" />
     </bean>
+    <bean id="testUserService" class="springbook.user.service.UserServiceTest$TestUserServiceImpl"
+          parent="userService" />
 </beans>

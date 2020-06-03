@@ -18,6 +18,7 @@ import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.List;
 
+import static junit.framework.TestCase.fail;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -32,11 +33,24 @@ public class UserServiceTest {
     List<User> users;
 
     @Autowired
-    UserServiceImpl userServiceImpl;
+    UserService userService;
+    @Autowired
+    UserService testUserService; // 같은 타입의 빈이 두개 존재하기 때문에 필드이름을 기준으로 주입될 빈이 결정된다. 자동 프록시 생성기에 의해 트랜잭션 부가기능이 testUserService빈에 적용됐는지 확인
 
     @Autowired
     UserDao userDao;
 
+    static class TestUserServiceException extends RuntimeException {}
+
+    static class TestUserServiceImpl extends UserServiceImpl { // 포인트컷 클래스필터에 걸리는이름으로 정의
+        private String id ="madnite1"; // 테스트 픽스처의 users(3)의 id값을 고정시켰다.
+
+        @Override
+        public void upgradeLevel(User user) {
+            if (user.getId().equals(this.id)) throw new TestUserServiceException();
+            super.upgradeLevel(user);
+        }
+    }
     @Before
     public void setUp() {
         this.users = Arrays.asList(
@@ -49,8 +63,23 @@ public class UserServiceTest {
     }
 
     @Test
+    public void upgradeAllOrNothing() {
+        userDao.deleteAll();
+        for(User user: users) userDao.add(user);
+
+        try {
+            this.testUserService.upgradeLevels();
+            fail("TestUserServiceException expected");
+        } catch(TestUserServiceException e) {
+        }
+
+        checkLevelUpgraded(users.get(1), false);
+    }
+
+
+    @Test
     public void bean() {
-       assertThat(this.userServiceImpl, is(notNullValue()));
+       assertThat(this.userService, is(notNullValue()));
     }
 
     @Test
@@ -85,5 +114,14 @@ public class UserServiceTest {
         assertThat(mailMessages.get(0).getTo()[0], is(users.get(1).getEmail()));
         assertThat(mailMessages.get(1).getTo()[0], is(users.get(3).getEmail()));
 
+    }
+
+    private void checkLevelUpgraded(User user, boolean upgraded) {
+        User userUpdate = userDao.get(user.getId());
+        if (upgraded) {
+            assertThat(userUpdate.getLevel(), is(user.getLevel().nextLevel()));
+        } else {
+            assertThat(userUpdate.getLevel(), is(user.getLevel()));
+        }
     }
 }
