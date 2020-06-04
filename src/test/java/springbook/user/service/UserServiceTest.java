@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import springbook.user.dao.UserDao;
@@ -88,8 +89,7 @@ public class UserServiceTest {
     }
 
     @Test
-    @Transactional
-    @Rollback(false) // 기본값은 true, 테스트가 끝나도 롤백되지 않게 하려면 false로 설정
+    @Transactional(propagation = Propagation.NEVER)
     public void transactionSync() {
         userService.deleteAll();
         userService.add(users.get(0));
