@@ -99,6 +99,22 @@ public class UserServiceTest {
     }
 
     @Test
+    public void transactionSyncAndRollbach() {
+        userDao.deleteAll();
+        assertThat(userDao.getCount(), is(0));
+
+        DefaultTransactionDefinition txDefinition = new DefaultTransactionDefinition();
+        TransactionStatus txStatus = transactionManager.getTransaction(txDefinition);
+
+        userService.add(users.get(0));
+        userService.add(users.get(1));
+        assertThat(userDao.getCount(), is(2));
+
+        transactionManager.rollback(txStatus);       // 강제롤백한다.
+        assertThat(userDao.getCount(), is(0)); // 롤백이되었는지 테스트
+    }
+
+    @Test
     public void upgradeAllOrNothing() {
         userDao.deleteAll();
         for(User user: users) userDao.add(user);
