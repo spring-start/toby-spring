@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.TransientDataAccessResourceException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -86,7 +87,7 @@ public class UserServiceTest {
 
     @Test
     @Transactional
-    // 테스트가 끝나면 롤백된다. 테스트에 적용되는 Transactional은 AOP용은 아니다.
+    @Rollback(false) // 기본값은 true, 테스트가 끝나도 롤백되지 않게 하려면 false로 설정
     public void transactionSync() {
         userService.deleteAll();
         userService.add(users.get(0));
