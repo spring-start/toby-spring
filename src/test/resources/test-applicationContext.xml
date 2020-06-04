@@ -26,20 +26,9 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
     </bean>
-    <!--    등록된 빈 중에서 어드바이저를 구현한 것을 모두 찾는다. 그 후 모든 어드바이저에 대해 포인트컷을 등록-->
-<!--    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />-->
+
     <aop:config>
-
-<!--    <bean id="transactionPointcut" class="org.springframework.aop.aspectj.AspectJExpressionPointcut">-->
-<!--        <property name="expression" value="execution(* *..*ServiceImpl.upgrade*(..))" />-->
-<!--    </bean>-->
-        <aop:pointcut id="transactionPointcut" expression="execution(* *..*ServiceImpl.upgrade*(..))"/>
-
-<!--    <bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">-->
-<!--        <property name="advice" ref="transactionAdvice" />-->
-<!--        <property name="pointcut" ref="transactionPointcut" />-->
-<!--    </bean>-->
-        <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut"/>
+        <aop:advisor advice-ref="transactionAdvice" pointcut="execution(* *..*ServiceImpl.upgrade*(..))"/>
     </aop:config>
     <bean id="transactionAdvice" class="springbook.user.service.TransactionAdvice">
         <property name="transactionManager" ref="transactionManager" />
