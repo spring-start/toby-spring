@@ -2,10 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 						http://www.springframework.org/schema/aop
-						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
 >
     <bean id="dataSource" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
 <!--        <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />-->
@@ -30,15 +33,14 @@
     <aop:config>
         <aop:advisor advice-ref="transactionAdvice" pointcut="execution(* *..*ServiceImpl.upgrade*(..))"/>
     </aop:config>
-    <bean id="transactionAdvice" class="org.springframework.transaction.interceptor.TransactionInterceptor">
-        <property name="transactionManager" ref="transactionManager" />
-        <property name="transactionAttributes">
-<!--            속성 규칙 : PROPAGATION_NAME, ISOLATION_NAME, readOnly, timeout_NNNN, -Exception1, +Exception2-->
-            <props>
-                <prop key="get*">PROPAGATION_REQUIRED,readOnly,timeout_30</prop>
-                <prop key="upgrade*">PROPAGATION_REQUIREDS_NEW,ISOLATION_SERIALIZABLE</prop>
-                <prop key="*">PROPAGATION_REQUIRED</prop>
-            </props>
-        </property>
-    </bean>
+
+    <!--    이 태그에 의해 인터셉터가 등록된다.-->
+    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="get*" propagation="REQUIRED" read-only="true" timeout="30"/>
+            <tx:method name="upgrade*" propagation="REQUIRES_NEW" isolation="SERIALIZABLE" />
+            <tx:method name="*" propagation="REQUIRED" />
+<!--            스키마에 의해 default값이 REQUIRED로 정의되어 있어 생략이 가능-->
+        </tx:attributes>
+    </tx:advice>
 </beans>
