@@ -86,9 +86,11 @@ public class UserServiceTest {
     @Test
     public void transactionSync() {
         DefaultTransactionDefinition txDefinition = new DefaultTransactionDefinition();
+        txDefinition.setReadOnly(true); // 읽기전용으로 최초 트랜잭션 실행
+
         TransactionStatus txStatus = transactionManager.getTransaction(txDefinition);
 
-        userService.deleteAll();
+        userService.deleteAll(); // 선언적 트랜잭션-속성(REQUIRED)에 의해 최초트랜잭션에 참여. 결과는 실패
 
         userService.add(users.get(0));
         userService.add(users.get(1));
