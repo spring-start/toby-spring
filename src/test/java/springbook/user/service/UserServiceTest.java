@@ -11,6 +11,9 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import springbook.user.dao.UserDao;
 import springbook.user.domain.Level;
 import springbook.user.domain.User;
@@ -32,6 +35,9 @@ import static springbook.user.service.BasicUserLevelUpgradePolicy.MIN_RECOMMEND_
 public class UserServiceTest {
 
     List<User> users;
+
+    @Autowired
+    PlatformTransactionManager transactionManager;
 
     @Autowired
     UserService userService;
@@ -75,6 +81,19 @@ public class UserServiceTest {
                 new User("madnite1", "이상호", "p4", Level.SILVER, 60, MIN_RECOMMEND_FOR_GOLD, "madnite1@spring.io"),
                 new User("green", "오민규", "p5", Level.GOLD, 100, Integer.MAX_VALUE, "green@spring.io")
         );
+    }
+
+    @Test
+    public void transactionSync() {
+        DefaultTransactionDefinition txDefinition = new DefaultTransactionDefinition();
+        TransactionStatus txStatus = transactionManager.getTransaction(txDefinition);
+
+        userService.deleteAll();
+
+        userService.add(users.get(0));
+        userService.add(users.get(1));
+
+        transactionManager.commit(txStatus);
     }
 
     @Test
