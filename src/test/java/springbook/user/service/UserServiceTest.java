@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import springbook.user.dao.UserDao;
 import springbook.user.domain.Level;
@@ -84,18 +85,12 @@ public class UserServiceTest {
     }
 
     @Test
+    @Transactional
+    // 테스트가 끝나면 롤백된다. 테스트에 적용되는 Transactional은 AOP용은 아니다.
     public void transactionSync() {
-        DefaultTransactionDefinition txDefinition = new DefaultTransactionDefinition();
-        txDefinition.setReadOnly(true); // 읽기전용으로 최초 트랜잭션 실행
-
-        TransactionStatus txStatus = transactionManager.getTransaction(txDefinition);
-
-        userService.deleteAll(); // 선언적 트랜잭션-속성(REQUIRED)에 의해 최초트랜잭션에 참여. 결과는 실패
-
+        userService.deleteAll();
         userService.add(users.get(0));
         userService.add(users.get(1));
-
-        transactionManager.commit(txStatus);
     }
 
     @Test
