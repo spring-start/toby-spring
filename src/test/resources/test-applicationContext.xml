@@ -23,18 +23,14 @@
     <bean id="transactionAdvice" class="springbook.user.service.TransactionAdvice">
         <property name="transactionManager" ref="transactionManager" />
     </bean>
-    <bean id="transactionPointCut" class="org.springframework.aop.support.NameMatchMethodPointcut">
-        <property name="mappedName" value="upgrade*" />
-    </bean>
     <bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
         <property name="advice" ref="transactionAdvice" />
-        <property name="pointcut" ref="transactionPointCut" />
+        <property name="pointcut" ref="transactionPointcut" />
     </bean>
 <!--    등록된 빈 중에서 어드바이저를 구현한 것을 모두 찾는다. 그 후 모든 어드바이저에 대해 포인트컷을 등록-->
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
-    <bean id="transactionPointcut" class="springbook.user.service.NameMatchClassMethodPointcut">
-        <property name="mappedClassName" value="*ServiceImpl" />
-        <property name="mappedName" value="upgrade*" />
+    <bean id="transactionPointcut" class="org.springframework.aop.aspectj.AspectJExpressionPointcut">
+        <property name="expression" value="execution(* *..*ServiceImpl.upgrade*(..))" />
     </bean>
     <bean id="testUserService" class="springbook.user.service.UserServiceTest$TestUserServiceImpl"
           parent="userService" />
