@@ -29,7 +29,10 @@
     <bean id="sqlService" class="springbook.user.sqlservice.DefaultSqlService">
     </bean>
     <bean id="sqlReader" class="springbook.user.sqlservice.JaxbXmlSqlReader">
-        <property name="sqlmapFile" value="sqlmap.xml"/>
+        <property name="sqlmap" value="classpath:sqlmap.xml"/>
+<!--        이것도 가능하다-->
+<!--        <property name="sqlmap" value="http://www.epril.com/resources/sqlmap.xml"/>-->
+
     </bean>
     <bean id="sqlRegistry" class="springbook.user.sqlservice.HashMapSqlRegistry">
     </bean>
