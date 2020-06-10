@@ -26,10 +26,14 @@
         <property name="dataSource" ref="dataSource" />
         <property name="sqlService" ref="sqlService" />
     </bean>
-    <bean id="sqlService" class="springbook.user.sqlservice.XmlSqlService">
-        <property name="sqlReader" ref="sqlService"/>
-        <property name="sqlRegistry" ref="sqlService"/>
+    <bean id="sqlService" class="springbook.user.sqlservice.BasicSqlService">
+        <property name="sqlReader" ref="sqlReader"/>
+        <property name="sqlRegistry" ref="sqlRegistry"/>
+    </bean>
+    <bean id="sqlReader" class="springbook.user.sqlservice.JaxbXmlSqlReader">
         <property name="sqlmapFile" value="sqlmap.xml"/>
+    </bean>
+    <bean id="sqlRegistry" class="springbook.user.sqlservice.HashMapSqlRegistry">
     </bean>
     <bean id="userService" class="springbook.user.service.UserServiceImpl">
         <property name="userDao" ref="userDao" />

@@ -1,16 +1,18 @@
 package springbook.user.sqlservice;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class SimpleSqlService implements SqlService {
-    private Map<String, String> sqlMap;
+public class HashMapSqlRegistry implements SqlRegistry {
+    private Map<String, String> sqlMap = new HashMap<>();
 
-    public void setSqlMap(Map<String, String> sqlMap) {
-        this.sqlMap = sqlMap;
+    @Override
+    public void registerSql(String key, String sql) {
+        sqlMap.put(key, sql);
     }
 
     @Override
-    public String getSql(String key) throws SqlRetrievalFailureException {
+    public String findSql(String key) throws SqlNotFoundException {
         String sql  = sqlMap.get(key);
         if (sql == null) {
             throw new SqlRetrievalFailureException(key +
