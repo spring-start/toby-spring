@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import springbook.user.domain.Level;
 import springbook.user.domain.User;
+import springbook.user.sqlservice.SqlService;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -34,10 +35,10 @@ public class UserDaoJdbc implements UserDao{
             return user;
         }
     };
-    private Map<String, String> sqlMap;
+    private SqlService sqlService;
 
-    public void setSqlMap(Map<String, String> sqlMap) {
-        this.sqlMap = sqlMap;
+    public void setSqlService(SqlService sqlService) {
+        this.sqlService = sqlService;
     }
 
     public void setDataSource(DataSource dataSource) {
@@ -46,31 +47,30 @@ public class UserDaoJdbc implements UserDao{
 
     public void add(final User user) throws DuplicateKeyException{
         this.jdbcTemplate.update(
-                this.sqlMap.get("add"),
+                this.sqlService.getSql("add"),
                 user.getId(), user.getName(), user.getPassword(), user.getLevel().intValue(), user.getLogin(), user.getRecommend(), user.getEmail());
     }
 
     public User get(String id) {
         return this.jdbcTemplate.queryForObject(
-                this.sqlMap.get("get"),
+                this.sqlService.getSql("get"),
                 new Object[] {id}, this.userMapper);
     }
 
     public void deleteAll() {
         this.jdbcTemplate.update(
-                this.sqlMap.get("deleteAll"));
-);
+                this.sqlService.getSql("deleteAll"));
     }
 
     public int getCount() {
         return this.jdbcTemplate.queryForInt(
-                this.sqlMap.get("getCount"));
+                this.sqlService.getSql("getCount"));
     }
 
     @Override
     public void update(User user) {
         this.jdbcTemplate.update(
-                this.sqlMap.get("update"),
+                this.sqlService.getSql("update"),
                 user.getName(), user.getPassword(),
                 user.getLevel().intValue(), user.getLogin(), user.getRecommend(), user.getEmail(), user.getId()
         );
@@ -78,7 +78,7 @@ public class UserDaoJdbc implements UserDao{
 
     public List<User> getAll() {
         return this.jdbcTemplate.query(
-                this.sqlMap.get("getAll"),
+                this.sqlService.getSql("getAll"),
                 this.userMapper);
     }
 }
