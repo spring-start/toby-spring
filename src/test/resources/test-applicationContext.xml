@@ -34,7 +34,10 @@
 <!--        <property name="sqlmap" value="http://www.epril.com/resources/sqlmap.xml"/>-->
 
     </bean>
-    <bean id="sqlRegistry" class="springbook.user.sqlservice.HashMapSqlRegistry">
+    <bean id="sqlRegistry" class="springbook.user.sqlservice.MyUpdatableSqlRegistry">
+    </bean>
+    <bean id="sqlAdminService" class="springbook.user.sqlservice.SqlAdminService">
+        <property name="updatableSqlRegistry" ref="sqlRegistry"/>
     </bean>
     <bean id="userService" class="springbook.user.service.UserServiceImpl">
         <property name="userDao" ref="userDao" />
