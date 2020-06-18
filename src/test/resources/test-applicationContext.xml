@@ -27,6 +27,8 @@
         <property name="sqlService" ref="sqlService" />
     </bean>
     <bean id="sqlService" class="springbook.user.sqlservice.DefaultSqlService">
+        <property name="unmarshaller" ref="unmarshaller"/>
+        <property name="sqlRegistry" ref="sqlRegistry"/>
     </bean>
     <bean id="sqlReader" class="springbook.user.sqlservice.JaxbXmlSqlReader">
         <property name="sqlmap" value="classpath:sqlmap.xml"/>
@@ -34,7 +36,7 @@
 <!--        <property name="sqlmap" value="http://www.epril.com/resources/sqlmap.xml"/>-->
 
     </bean>
-    <bean id="sqlRegistry" class="springbook.user.sqlservice.MyUpdatableSqlRegistry">
+    <bean id="sqlRegistry" class="springbook.user.sqlservice.ConcurrentHashMapSqlRegistry">
     </bean>
     <bean id="sqlAdminService" class="springbook.user.sqlservice.SqlAdminService">
         <property name="updatableSqlRegistry" ref="sqlRegistry"/>
