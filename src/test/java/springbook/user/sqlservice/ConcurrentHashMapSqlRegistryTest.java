@@ -55,6 +55,6 @@ public class ConcurrentHashMapSqlRegistryTest {
 
     @Test(expected = SqlUpdateFailureException.class)
     public void updatedWithNotExistingKey() {
-        sqlRegistry.updateSql("SQL#@231");
+        sqlRegistry.updateSql("SQL#@231", "abc");
     }
 }
