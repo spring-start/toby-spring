@@ -28,6 +28,7 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-context-support', version: '3.1.0.RELEASE'
     compile group: 'aopalliance', name: 'aopalliance', version: '1.0'
     compile group: 'org.springframework', name: 'spring-aop', version: '3.1.0.RELEASE'
+    compile group: 'org.hsqldb', name: 'hsqldb', version:'2.4.0'
 //    compile group: 'org.aspectj', name: 'aspectjtools', version: '1.6.6.RELEASE'
 }
 
